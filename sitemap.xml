@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://alonezero.github.io/posts/879b9f5e/</loc>
-    
-    <lastmod>2017-12-30T14:41:24.929Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://alonezero.github.io/categories/index.html</loc>
     
-    <lastmod>2017-12-30T04:11:15.014Z</lastmod>
+    <lastmod>2017-12-31T02:46:20.258Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://alonezero.github.io/tags/index.html</loc>
     
-    <lastmod>2017-12-30T04:10:06.513Z</lastmod>
+    <lastmod>2017-12-31T02:46:17.513Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://alonezero.github.io/posts/52a75fbe/</loc>
+    
+    <lastmod>2017-12-31T02:40:34.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://alonezero.github.io/posts/879b9f5e/</loc>
+    
+    <lastmod>2017-12-30T14:41:24.929Z</lastmod>
     
   </url>
   
