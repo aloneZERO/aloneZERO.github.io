@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="justZero, Hexo, NexT" />
+  <meta name="keywords" content="大数据,Hive," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="爱编程，更爱生活！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="justZero&#39;s Blog">
-<meta property="og:url" content="https://alonezero.github.io/tags/software/index.html">
+<meta name="description" content="Hadoop 家族动物园里属这个蜜蜂 Hive 配置过程中坑最多，得动动笔了。  一、前言 Hive 是个啥？移步 传送门。  二、踩坑环境   软件 版本     虚拟机系统 Ubuntu Server 16.04.2   Hadoop Hadoop 2.6.0   MySQL MySQL 5.7">
+<meta name="keywords" content="大数据,Hive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive踩坑日记">
+<meta property="og:url" content="https://alonezero.github.io/posts/72767b4e/index.html">
 <meta property="og:site_name" content="justZero&#39;s Blog">
-<meta property="og:description" content="爱编程，更爱生活！">
+<meta property="og:description" content="Hadoop 家族动物园里属这个蜜蜂 Hive 配置过程中坑最多，得动动笔了。  一、前言 Hive 是个啥？移步 传送门。  二、踩坑环境   软件 版本     虚拟机系统 Ubuntu Server 16.04.2   Hadoop Hadoop 2.6.0   MySQL MySQL 5.7">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-01T14:08:54.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="justZero&#39;s Blog">
-<meta name="twitter:description" content="爱编程，更爱生活！">
+<meta name="twitter:title" content="Hive踩坑日记">
+<meta name="twitter:description" content="Hadoop 家族动物园里属这个蜜蜂 Hive 配置过程中坑最多，得动动笔了。  一、前言 Hive 是个啥？移步 传送门。  二、踩坑环境   软件 版本     虚拟机系统 Ubuntu Server 16.04.2   Hadoop Hadoop 2.6.0   MySQL MySQL 5.7">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://alonezero.github.io/tags/software/"/>
+  <link rel="canonical" href="https://alonezero.github.io/posts/72767b4e/"/>
 
 
 
 
 
-  <title>标签: software | justZero's Blog</title>
+  <title>Hive踩坑日记 | justZero's Blog</title>
   
 
 
@@ -155,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +285,317 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>software<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alonezero.github.io/posts/72767b4e/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="justZero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="justZero's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/879b9f5e/" itemprop="url">
-              
-                <span itemprop="name">软件收藏清单</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Hive踩坑日记</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-29T00:00:00+08:00"
-              content="2017-12-29" >
-          12-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T22:03:40+08:00">
+                2018-01-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/72767b4e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/72767b4e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/72767b4e/" class="leancloud_visitors" data-flag-title="Hive踩坑日记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hadoop 家族动物园里属这个<strong>蜜蜂 Hive</strong> 配置过程中坑最多，得动动笔了。</p>
+<hr>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><blockquote>
+<p>Hive 是个啥？移步 <a href="http://baike.baidu.com/item/hive/67986" target="_blank" rel="noopener">传送门</a>。</p>
+</blockquote>
+<h2 id="二、踩坑环境"><a href="#二、踩坑环境" class="headerlink" title="二、踩坑环境"></a>二、踩坑环境</h2><table>
+<thead>
+<tr>
+<th>软件</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟机系统</td>
+<td>Ubuntu Server 16.04.2</td>
+</tr>
+<tr>
+<td>Hadoop</td>
+<td>Hadoop 2.6.0</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>MySQL 5.7</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="三、准备工作"><a href="#三、准备工作" class="headerlink" title="三、准备工作"></a>三、准备工作</h2><p>MySQL 扮演的角色是存储 Hive 库的元数据，当然还可配置其它的方式存储，这里不多说。Hive 前期配置多数坑都在 MySQL 这，所以把 MySQL整好会顺利许多。</p>
+<p><strong>1. 配置远程访问</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>将 <code>bind-address=127.0.0.1</code> 改为 自己机器的 IP。</p>
+<p><strong>特别说明</strong>：我这个乌班图新版的 MySQL 中 <strong>my.cnf</strong> 里不直接显示属性了，默认属性值被移到 <code>/etc/mysql/conf.d/mysql.cnf</code>和<code>/etc/mysql/mysql.conf.d/mysql.cnf</code>里。所以可参考 <code>/etc/mysql/mysql.conf.d/mysql.cnf</code>文件来进行配置。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 在 /etc/mysql/my.cnf 文件末尾配置新值以覆盖默认值</span><br><span class="line">[mysqld]</span><br><span class="line">bind-address=your_machine_ip</span><br></pre></td></tr></table></figure></p>
+<p><strong>[mysqld]</strong> 是属性组，不加不符合语法，会导致 MySQL 服务无法启动。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看当前启动的MySQL的属性值</span><br><span class="line"><span class="meta">$</span> mysql --help</span><br></pre></td></tr></table></figure></p>
+<p><strong>2. 新建 hive 用户来操作 MySQL</strong><br>为 Hive 新建一个 MySQL 用户来专门操作 Hive 的元数据库。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -uroot -p</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span> grant all privileges on *.* to hive@"Master" identified by "hive";</span><br><span class="line"><span class="meta">mysql&gt;</span> flush privileges;</span><br></pre></td></tr></table></figure></p>
+<p>最好是仅赋予 Hive 用户操作元数据库的权限，我为了操作方便就权限全给了。”Master” 是我配置的机器主机名，用于 hadoop 等集群搭建的。</p>
+<p><strong>3. 准备好 JDBC 驱动包</strong><br>将 jdbc 驱动包放到 <code>${HIVE_HOME}/lib/</code> 下，尽量用高本版驱动，驱动版本不对也会导致启动 Hive 时出错，这里我是选择了：<a href="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz" target="_blank" rel="noopener">mysql-connector-java-5.1.40-bin</a></p>
+<h2 id="四、坑来，坑来"><a href="#四、坑来，坑来" class="headerlink" title="四、坑来，坑来~"></a>四、坑来，坑来~</h2><p><strong>1. hive-site.xml 中 MySQL jdbc 连接地址出错</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 异常信息</span><br><span class="line">The reference to entity "XXX" must end with the ';' delimiter</span><br></pre></td></tr></table></figure></p>
+<p>我当时写的是：<br><code>jdbc:mysql://Master:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false</code>，后来在这篇<a href="http://boyadn.blog.163.com/blog/static/74230736201012292739317/" target="_blank" rel="noopener">博客</a>中得知”<strong>&amp;</strong>“这类特殊字符在 xml 文件中需要转义，写成”<strong>&amp;amp;</strong>“就OK了。</p>
+<p>在 xml 文件中还有几个常见的字符需要转义替换：</p>
+<table>
+<thead>
+<tr>
+<th>原字符</th>
+<th>转义字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>&amp;amp;</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&amp;lt;</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>&amp;gt;</td>
+</tr>
+<tr>
+<td>“</td>
+<td>&amp;quot;</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&amp;apos;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. hive 命令进入 Hive CLI(command line interface) 异常</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ hive</span><br><span class="line"></span><br><span class="line">Exception in thread <span class="string">"main"</span> java.lang.RuntimeException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient</span><br><span class="line">        at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:<span class="number">444</span>)</span><br><span class="line">        at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:<span class="number">672</span>)</span><br><span class="line">        at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:<span class="number">616</span>)</span><br><span class="line">        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">39</span>)</span><br></pre></td></tr></table></figure></p>
+<p>原因：没有正常启动 Hive 的 <strong>Metastore Server</strong> 服务。<br>解决方法：后台启动 Hive 的 Metastore Server服务：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hive --service metastore &amp;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3. hiveserver 启动异常</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ hive --service hiveserver &amp;</span><br><span class="line"></span><br><span class="line">Exception in thread <span class="string">"main"</span> java.lang.ClassNotFoundException: org.apache.hadoop.hive.service.HiveServer</span><br><span class="line">        at java.net.URLClassLoader$<span class="number">1</span>.run(URLClassLoader.java:<span class="number">366</span>)</span><br><span class="line">        at java.net.URLClassLoader$<span class="number">1</span>.run(URLClassLoader.java:<span class="number">355</span>)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at java.net.URLClassLoader.findClass(URLClassLoader.java:<span class="number">354</span>)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">425</span>)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">358</span>)</span><br></pre></td></tr></table></figure></p>
+<p>进入 Hive CLI 前需要先启两个服务一个是 (1) 中说的 <strong>metastore server</strong>，还有一个 <strong>hiveserver</strong> 。</p>
+<p>这里的异常解决方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 类是 hiveserver2 ... 额</span><br><span class="line"><span class="meta">$</span> hive --service hiveserver2 &amp;</span><br></pre></td></tr></table></figure></p>
+<p><strong>4. hive 命令进入 Hive CLI 异常</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ hive</span><br><span class="line"></span><br><span class="line">[ERROR] Terminal initialization failed; falling back to unsupported</span><br><span class="line">java.lang.IncompatibleClassChangeError: Found <span class="class"><span class="keyword">class</span> <span class="title">jline</span>.<span class="title">Terminal</span>, <span class="title">but</span> <span class="title">interface</span> <span class="title">was</span> <span class="title">expected</span></span></span><br><span class="line">        at jline.TerminalFactory.create(TerminalFactory.java:101)</span><br><span class="line">        at jline.TerminalFactory.get(TerminalFactory.java:<span class="number">158</span>)</span><br><span class="line">        at jline.console.ConsoleReader.&lt;init&gt;(ConsoleReader.java:<span class="number">229</span>)</span><br><span class="line">        at jline.console.ConsoleReader.&lt;init&gt;(ConsoleReader.java:<span class="number">221</span>)</span><br><span class="line">        at jline.console.ConsoleReader.&lt;init&gt;(ConsoleReader.java:<span class="number">209</span>)</span><br><span class="line">        at org.apache.hadoop.hive.cli.CliDriver.getConsoleReader(CliDriver.java:<span class="number">773</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这个异常原因在 Hive 官方文档里有说：</p>
+<blockquote>
+<p>Hive has upgraded to Jline2 but jline 0.9x exists in the Hadoop lib.</p>
+</blockquote>
+<p>解决方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 删除老版本的 jline.jar</span><br><span class="line"><span class="meta">$</span> rm $&#123;HADOOP_HOME&#125;/share/hadoop/yarn/lib/jline-0.9.94.jar</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 拷贝新版本 jline.jar 到相应的 hadoop lib目录下</span><br><span class="line"><span class="meta">$</span> cp $&#123;HIVE_HOME&#125;/lib/jline-2.12.jar $&#123;HADOOP_HOME&#125;/share/hadoop/yarn/lib/</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>（<em>继续踩坑中……</em>）</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a href="http://boyadn.blog.163.com/blog/static/74230736201012292739317/" target="_blank" rel="noopener">The reference to entity “characterEncoding” must end with the ‘;’ delimiter</a><br>[2] <a href="http://blog.csdn.net/freedomboy319/article/details/44828337" target="_blank" rel="noopener">Hive常见问题汇总</a><br>[3] <a href="https://stackoverflow.com/questions/28997441/hive-startup-error-terminal-initialization-failed-falling-back-to-unsupporte" target="_blank" rel="noopener">hive startup -[ERROR] Terminal initialization failed; falling back to unsupported</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>手滑了就鼓励一下吧~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="justZero 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    justZero
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://alonezero.github.io/posts/72767b4e/" title="Hive踩坑日记">https://alonezero.github.io/posts/72767b4e/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+            <a href="/tags/Hive/" rel="tag"># Hive</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/52a75fbe/" rel="next" title="Git命令手册">
+                <i class="fa fa-chevron-left"></i> Git命令手册
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +603,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -358,8 +630,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -452,6 +733,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、踩坑环境"><span class="nav-number">2.</span> <span class="nav-text">二、踩坑环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、准备工作"><span class="nav-number">3.</span> <span class="nav-text">三、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、坑来，坑来"><span class="nav-number">4.</span> <span class="nav-text">四、坑来，坑来~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -592,6 +889,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1110,26 +1411,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
