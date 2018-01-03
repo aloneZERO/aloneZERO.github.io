@@ -3,6 +3,130 @@
   
     
     <entry>
+      <title><![CDATA[MySQL事务隔离级别]]></title>
+      <url>/posts/8f885523/</url>
+      <content type="html"><![CDATA[<h2 id="一、事务的特性"><a href="#一、事务的特性" class="headerlink" title="一、事务的特性"></a>一、事务的特性</h2><ul>
+<li><strong>原子性</strong>：指处于同一个事务中的多条语句是不可分割的。</li>
+<li><strong>一致性</strong>：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。比如：转账—转账前两个账户余额之和为233￥，转账之后也应该是233￥。</li>
+<li><strong>隔离性</strong>：指多线程环境下，一个线程中的事务不能被其他线程中的事务打扰</li>
+<li><strong>持久性</strong>：事务一旦提交，就应该被永久保存起来。</li>
+</ul>
+<a id="more"></a>
+<h2 id="二、-事务的隔离性：隔离级别分类"><a href="#二、-事务的隔离性：隔离级别分类" class="headerlink" title="二、 事务的隔离性：隔离级别分类"></a>二、 事务的隔离性：隔离级别分类</h2><p>   如果不考虑事务的隔离性，则可能会出现以下问题：</p>
+<ul>
+<li><strong>脏读</strong>：指一个线程中的事务读取到了另外一个线程中<strong>未提交</strong>的数据。</li>
+<li><strong>不可重复读</strong>：指一个线程中的事务读取到了另外一个线程中<strong>提交的update</strong>的数据。</li>
+<li><strong>虚读</strong>：指一个线程中的事务读取到了另外一个线程中<strong>提交的insert</strong>的数据。</li>
+</ul>
+<p><strong>隔离级别</strong>：</p>
+<ul>
+<li><strong>1-READ UNCOMMITTED</strong>: 脏读、不可重复读、虚读都有可能发生。</li>
+<li><strong>2-READ COMMITTED</strong>: 防止脏读的发生，不可重复读、虚读都有可能发生。</li>
+<li><strong>4-REPEATABLE READ</strong>: 防止脏读、不可重复读的发生，虚读有可能发生。</li>
+<li><strong>8-SERIALIZABLE</strong>: 防止脏读、不可重复读、虚读的发生。</li>
+</ul>
+<p>级别越高，数据越安全，相对就导致性能越低。</p>
+<hr>
+<h2 id="拿-MySQL-现身说法"><a href="#拿-MySQL-现身说法" class="headerlink" title="拿 MySQL 现身说法"></a>拿 MySQL 现身说法</h2><p>查看当前事务的隔离级别：<strong>SELECT @@tx_isolation;</strong></p>
+<p>注意：<strong>更改事务的隔离级别，一定要在开启事务之前设置。</strong></p>
+<p>更改事务：<strong>SET transaction isolation level 四个级别之一(单词);</strong></p>
+<p>通过一个情景模拟来理解隔离级别：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 准备工作</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_account(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">11</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">30</span>),</span><br><span class="line">    money <span class="built_in">float</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_account(<span class="keyword">id</span>,<span class="keyword">name</span>,money) <span class="keyword">values</span></span><br><span class="line">    (<span class="number">1</span>,<span class="string">'a'</span>,<span class="number">1000</span>),</span><br><span class="line">    (<span class="number">2</span>,<span class="string">'b'</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">set</span> transcation <span class="keyword">isolation</span> <span class="keyword">level</span> <span class="keyword">read</span> uncommited;</span><br><span class="line"><span class="comment">-- 可打开两个 CMD 窗口连接 MySQL 来模拟两位用户~</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>时间点</th>
+<th>线程1-自己</th>
+<th>线程2-其他人</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t1</td>
+<td>start transacion;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>t2</td>
+<td>select * from t_account <br>where name=’a’</td>
+<td></td>
+<td>a查询账户：我有1000元</td>
+</tr>
+<tr>
+<td>t3</td>
+<td></td>
+<td>start transaction;</td>
+<td></td>
+</tr>
+<tr>
+<td>t4</td>
+<td></td>
+<td>update t_account set money=money+100 <br>where name=’a’;</td>
+<td>其他人：给a存100，逗逗他</td>
+</tr>
+<tr>
+<td>t5</td>
+<td>select * from t_account <br>where name=’a’</td>
+<td></td>
+<td>a再次查询账户，1100元（我靠，多了100块）！<br>读取到了另外一个<br>线程中未提交的数据，出现脏读</td>
+</tr>
+<tr>
+<td>t6</td>
+<td></td>
+<td>commit;</td>
+<td></td>
+</tr>
+<tr>
+<td>t7</td>
+<td>select * from t_account <br>where name=’a’</td>
+<td></td>
+<td>a又查询账户，发现还是1100元（踩到狗屎啦？）。<br>前后读到的数据不一致，<br>读到了另外一个线程中提交的 update 数据，<br>出现可重复读</td>
+</tr>
+<tr>
+<td>t8</td>
+<td></td>
+<td>insert into t_account <br>values(2,’蛤蛤蛤’,233);</td>
+<td></td>
+</tr>
+<tr>
+<td>t9</td>
+<td>select * from t_account;</td>
+<td></td>
+<td>还是让工作人员来确认下吧。<br>一查总用户，我凑又多了一个人叫“蛤蛤蛤”！<br>读到了另外一个线程中提交的 insert 数据，出现虚读</td>
+</tr>
+<tr>
+<td>t10</td>
+<td>commit;</td>
+<td></td>
+<td>工作人员提交事务，两人一脸懵逼……</td>
+</tr>
+</tbody>
+</table>
+<h2 id="JDBC-中控制事务的隔离级别："><a href="#JDBC-中控制事务的隔离级别：" class="headerlink" title="JDBC 中控制事务的隔离级别："></a>JDBC 中控制事务的隔离级别：</h2><p>前提：在开启事务之前设置隔离级别。</p>
+<p>通过<code>Connection</code>中的整型常量代表不同的级别：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1606489-56d81fd181aec8e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="实际就是一个整数常量"></p>
+<p>设置事务的隔离级别：<strong>Connection：void setTransactionIsolation(int level);</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Database </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+            <tag> 数据库事务 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hive踩坑日记]]></title>
       <url>/posts/72767b4e/</url>
       <content type="html"><![CDATA[<p>Hadoop 家族动物园里属这个<strong>蜜蜂 Hive</strong> 配置过程中坑最多，得动动笔了。</p>
