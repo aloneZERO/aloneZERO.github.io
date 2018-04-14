@@ -3,6 +3,37 @@
   
     
     <entry>
+      <title><![CDATA[Linux多版本JDK切换]]></title>
+      <url>/posts/31b9e7c6/</url>
+      <content type="html"><![CDATA[<p>一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的<code>alternatives</code>命令完美地解决了这个问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ubuntu</span></span><br><span class="line">update-alternatives</span><br><span class="line"></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line">alternatives</span><br></pre></td></tr></table></figure>
+<p>不同Linux版本上命令名有所不同，但用法完全一样，下面以<strong>Ubuntu</strong>进行演示。</p>
+<a id="more"></a>
+<h3 id="注册JDK相关命令"><a href="#注册JDK相关命令" class="headerlink" title="注册JDK相关命令"></a>注册JDK相关命令</h3><p>机器上除了自带的OpenJDK，还有一个我自己下载的JDK1.8</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --install &lt;link_path&gt; &lt;name&gt; &lt;command_path&gt; &lt;priority&gt;</span></span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /home/leo/jdk8/bin/java 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /home/leo/jdk8/bin/javac 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/jar java /home/leo/jdk8/bin/jar 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下 /usr/bin</span></span><br><span class="line">ls -al | grep java</span><br><span class="line"><span class="comment"># 效果如下</span></span><br><span class="line">lrwxrwxrwx  1 root root          22 11月 13  2015 java -&gt; /etc/alternatives/java</span><br><span class="line">lrwxrwxrwx  1 root root          23 11月 13  2015 javac -&gt; /etc/alternatives/javac</span><br></pre></td></tr></table></figure>
+<h3 id="配置默认JDK相关命令"><a href="#配置默认JDK相关命令" class="headerlink" title="配置默认JDK相关命令"></a>配置默认JDK相关命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --config &lt;command_name&gt;</span></span><br><span class="line">update-alternatives --config java</span><br><span class="line"><span class="comment"># 出现选择界面，输入序号回车即可</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative java (providing /usr/bin/java).</span><br><span class="line"></span><br><span class="line">  Selection    Path                                            Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">  0            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java   1071      auto mode</span><br><span class="line">* 1            /usr/lib/jvm/jdk8/bin/java                       1         manual mode</span><br><span class="line"></span><br><span class="line">Press enter to keep the current choice[*], or <span class="built_in">type</span> selection number: 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上配置javac、jar命令即可</span></span><br></pre></td></tr></table></figure>
+<h3 id="检查是否切换成功"><a href="#检查是否切换成功" class="headerlink" title="检查是否切换成功"></a>检查是否切换成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line"></span><br><span class="line">java version <span class="string">"1.8.0_161"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>说白了<code>alternatives</code>就是创建了一个一个的软链接，并对软链接提供了方便的管理功能。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> JDK </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL问题集]]></title>
       <url>/posts/bb8b1640/</url>
       <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1606489-15c05883073ef5a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
