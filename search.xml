@@ -10,8 +10,8 @@
 <p>不同Linux版本上命令名有所不同，但用法完全一样，下面以<strong>Ubuntu</strong>进行演示。</p>
 <a id="more"></a>
 <h3 id="注册JDK相关命令"><a href="#注册JDK相关命令" class="headerlink" title="注册JDK相关命令"></a>注册JDK相关命令</h3><p>机器上除了自带的OpenJDK，还有一个我自己下载的JDK1.8</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --install &lt;link_path&gt; &lt;name&gt; &lt;command_path&gt; &lt;priority&gt;</span></span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /home/leo/jdk8/bin/java 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /home/leo/jdk8/bin/javac 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/jar java /home/leo/jdk8/bin/jar 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下 /usr/bin</span></span><br><span class="line">ls -al | grep java</span><br><span class="line"><span class="comment"># 效果如下</span></span><br><span class="line">lrwxrwxrwx  1 root root          22 11月 13  2015 java -&gt; /etc/alternatives/java</span><br><span class="line">lrwxrwxrwx  1 root root          23 11月 13  2015 javac -&gt; /etc/alternatives/javac</span><br></pre></td></tr></table></figure>
-<h3 id="配置默认JDK相关命令"><a href="#配置默认JDK相关命令" class="headerlink" title="配置默认JDK相关命令"></a>配置默认JDK相关命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --config &lt;command_name&gt;</span></span><br><span class="line">update-alternatives --config java</span><br><span class="line"><span class="comment"># 出现选择界面，输入序号回车即可</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative java (providing /usr/bin/java).</span><br><span class="line"></span><br><span class="line">  Selection    Path                                            Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">  0            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java   1071      auto mode</span><br><span class="line">* 1            /usr/lib/jvm/jdk8/bin/java                       1         manual mode</span><br><span class="line"></span><br><span class="line">Press enter to keep the current choice[*], or <span class="built_in">type</span> selection number: 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上配置javac、jar命令即可</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --install &lt;link_path&gt; &lt;name&gt; &lt;command_path&gt; &lt;priority&gt;</span></span><br><span class="line"><span class="comment"># priority：数值越大优先级越高。当优先级为当前最大时，alternatives自动选择其为默认命令</span></span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /home/leo/jdk8/bin/java 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /home/leo/jdk8/bin/javac 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/jar java /home/leo/jdk8/bin/jar 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下 /usr/bin</span></span><br><span class="line">ls -al | grep java</span><br><span class="line"><span class="comment"># 效果如下</span></span><br><span class="line">lrwxrwxrwx  1 root root          22 11月 13  2015 java -&gt; /etc/alternatives/java</span><br><span class="line">lrwxrwxrwx  1 root root          23 11月 13  2015 javac -&gt; /etc/alternatives/javac</span><br></pre></td></tr></table></figure>
+<h3 id="手动配置默认JDK相关命令"><a href="#手动配置默认JDK相关命令" class="headerlink" title="手动配置默认JDK相关命令"></a>手动配置默认JDK相关命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --config &lt;command_name&gt;</span></span><br><span class="line">update-alternatives --config java</span><br><span class="line"><span class="comment"># 出现选择界面，输入序号回车即可</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative java (providing /usr/bin/java).</span><br><span class="line"></span><br><span class="line">  Selection    Path                                            Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">  0            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java   1071      auto mode</span><br><span class="line">* 1            /usr/lib/jvm/jdk8/bin/java                       1         manual mode</span><br><span class="line"></span><br><span class="line">Press enter to keep the current choice[*], or <span class="built_in">type</span> selection number: 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上配置javac、jar命令即可</span></span><br></pre></td></tr></table></figure>
 <h3 id="检查是否切换成功"><a href="#检查是否切换成功" class="headerlink" title="检查是否切换成功"></a>检查是否切换成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line"></span><br><span class="line">java version <span class="string">"1.8.0_161"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>说白了<code>alternatives</code>就是创建了一个一个的软链接，并对软链接提供了方便的管理功能。</p>
 ]]></content>
@@ -380,6 +380,7 @@
 <li><a href="https://www.xp510.com/xiazai/Application/other/33649.html" target="_blank" rel="noopener">Simple Mind</a>：简洁的思维导图</li>
 <li><a href="">KMSAuto-Net</a>：微软软件激活工具（主要是 Office）</li>
 <li><a href="http://www.1checker.com/Products/DownLoad" target="_blank" rel="noopener">1Checker</a>：英文校对 </li>
+<li><a href="http://www.flvcd.com/index.htm" target="_blank" rel="noopener">硕鼠下载器</a>：视频网站解析及视频下载</li>
 </ul>
 </li>
 </ul>
@@ -387,7 +388,7 @@
 <li><h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><ul>
 <li><a href="http://www.eclipse.org/" target="_blank" rel="noopener">Eclipse</a></li>
 <li><a href="https://www.continuum.io/anaconda-overview" target="_blank" rel="noopener">Anaconda</a></li>
-<li><a href="https://www.jetbrains.com/" target="_blank" rel="noopener">Jetbrains 全家桶</a>（<a href="https://www.iteblog.com/idea/" target="_blank" rel="noopener">在线注册地址</a>）</li>
+<li><a href="https://www.jetbrains.com/" target="_blank" rel="noopener">Jetbrains 全家桶</a>（学生邮箱免费）</li>
 <li><a href="https://www.rstudio.com/" target="_blank" rel="noopener">RStudio</a></li>
 </ul>
 </li>
@@ -401,14 +402,12 @@
 </li>
 <li><h3 id="Database-GUI-Tool"><a href="#Database-GUI-Tool" class="headerlink" title="Database GUI Tool"></a>Database GUI Tool</h3><ul>
 <li><a href="http://mydown.yesky.com/pcsoft/33369680.html" target="_blank" rel="noopener">SQLyog</a>：MySQL</li>
-<li><a href="https://mongobooster.com/home" target="_blank" rel="noopener">MongoBooster</a>：MongoDB<ul>
+<li><a href="https://mongobooster.com/home" target="_blank" rel="noopener">MongoBooster</a>：MongoDB</li>
 <li><a href="http://www.liangchan.net/liangchan/4785.html" target="_blank" rel="noopener">Navicat Premium</a>：多支持</li>
 </ul>
 </li>
-</ul>
-</li>
 <li><h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><ul>
-<li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>：推荐！</li>
 <li><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">Notepad++</a>：（插件列表）<ul>
 <li>Plugin Manager</li>
 <li>Compare</li>
@@ -446,10 +445,11 @@
 <li><a href="http://cmder.net/" target="_blank" rel="noopener">Cmder</a>：Better cmd</li>
 <li><a href="http://www.netsarang.com/products/xsh_overview.html" target="_blank" rel="noopener">Xshell</a></li>
 <li><a href="http://www.uvviewsoft.com/logviewer/" target="_blank" rel="noopener">LogViewer</a>：大文本查看，秒开</li>
-<li><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">Shadowsocks</a>：SSR作者不在更新，SS仍在</li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">Shadowsocks</a>：SSR不在更新，SS仍在</li>
 <li><a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a></li>
 <li><a href="http://cygwin.com/" target="_blank" rel="noopener">Cygwin</a></li>
-<li><a href="https://my.worktile.com/" target="_blank" rel="noopener">Worktile</a>：协作平台</li>
+<li><a href="https://my.worktile.com/" target="_blank" rel="noopener">Worktile</a>：任务管理平台</li>
+<li><a href="https://www.teambition.com" target="_blank" rel="noopener">Teambition</a>：任务管理平台</li>
 <li><a href="http://www.wampserver.com/en/" target="_blank" rel="noopener">WAMP</a></li>
 </ul>
 </li>
