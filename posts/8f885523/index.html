@@ -436,7 +436,7 @@
 <h2 id="拿-MySQL-现身说法"><a href="#拿-MySQL-现身说法" class="headerlink" title="拿 MySQL 现身说法"></a>拿 MySQL 现身说法</h2><p>查看当前事务的隔离级别：<strong>SELECT @@tx_isolation;</strong></p>
 <p>注意：<strong>更改事务的隔离级别，一定要在开启事务之前设置。</strong></p>
 <p>更改事务：<strong>SET transaction isolation level 四个级别之一(单词);</strong></p>
-<p>通过一个情景模拟来理解隔离级别：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 准备工作</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_account(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">11</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">30</span>),</span><br><span class="line">    money <span class="built_in">float</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_account(<span class="keyword">id</span>,<span class="keyword">name</span>,money) <span class="keyword">values</span></span><br><span class="line">    (<span class="number">1</span>,<span class="string">'a'</span>,<span class="number">1000</span>),</span><br><span class="line">    (<span class="number">2</span>,<span class="string">'b'</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">set</span> transcation <span class="keyword">isolation</span> <span class="keyword">level</span> <span class="keyword">read</span> uncommited;</span><br><span class="line"><span class="comment">-- 可打开两个 CMD 窗口连接 MySQL 来模拟两位用户~</span></span><br></pre></td></tr></table></figure></p>
+<p>通过一个情景模拟来理解隔离级别：<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 准备工作</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_account(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">11</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">30</span>),</span><br><span class="line">    money <span class="built_in">float</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_account(<span class="keyword">id</span>,<span class="keyword">name</span>,money) <span class="keyword">values</span></span><br><span class="line">    (<span class="number">1</span>,<span class="string">'a'</span>,<span class="number">1000</span>),</span><br><span class="line">    (<span class="number">2</span>,<span class="string">'b'</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">set</span> transcation <span class="keyword">isolation</span> <span class="keyword">level</span> <span class="keyword">read</span> uncommited;</span><br><span class="line"><span class="comment">-- 可打开两个 CMD 窗口连接 MySQL 来模拟两位用户~</span></span><br></pre></td></tr></table></figure></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -709,7 +709,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
