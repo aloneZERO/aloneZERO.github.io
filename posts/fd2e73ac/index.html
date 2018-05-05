@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="前言 真是被 Ubuntu 环境下的 MySQL 折磨的够呛。一次安装终身不改还好，卸载想重装其它版本？那各种报错可就来了，多数就是因为没卸干净。特写篇博客重点突出彻底二字！">
 <meta name="keywords" content="Ubuntu,MySQL卸载,彻底卸载！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下彻底卸载MySQL">
 <meta property="og:url" content="https://alonezero.github.io/posts/fd2e73ac/index.html">
 <meta property="og:site_name" content="justZero&#39;s Blog">
-<meta property="og:description" content="前言 真是被 Ubuntu 环境下的 MySQL 折磨的够呛。一次安装终身不改还好，卸载想重装其它版本？那各种报错可就来了，多数就是因为没卸干净。特写篇博客重点突出彻底二字！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T15:44:49.190Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1606489-ee85f904a2a2d603.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-05T12:30:09.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下彻底卸载MySQL">
-<meta name="twitter:description" content="前言 真是被 Ubuntu 环境下的 MySQL 折磨的够呛。一次安装终身不改还好，卸载想重装其它版本？那各种报错可就来了，多数就是因为没卸干净。特写篇博客重点突出彻底二字！">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1606489-ee85f904a2a2d603.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -173,7 +172,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">发发牢骚</h1>
+        <h1 class="site-subtitle" itemprop="description">爱编程，更爱生活！</h1>
       
   </div>
 
@@ -409,10 +408,11 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+        <p><img src="https://upload-images.jianshu.io/upload_images/1606489-ee85f904a2a2d603.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>真是被 Ubuntu 环境下的 MySQL 折磨的够呛。一次安装终身不改还好，卸载想重装其它版本？那各种报错可就来了，多数就是因为没卸干净。特写篇博客重点突出<strong>彻底</strong>二字！</p>
 </blockquote>
-<a id="more"></a>
 <h2 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h2><p><code>sudo apt-get remove mysql</code> 就 OK 了？太年轻~</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg --purge mysql-client-core-5.5</span><br><span class="line">sudo dpkg --purge mysql-client</span><br><span class="line">sudo dpkg --purge mysql-server-core-5.5</span><br><span class="line">sudo dpkg --purge mysql-common <span class="comment"># 依赖包放到最后清除</span></span><br><span class="line"><span class="comment"># sudo dpkg --purge mysql # 两次tab键是可以补全的命令的</span></span><br><span class="line"></span><br><span class="line">sudo apt-get --purge remove mysql-server-5.5</span><br><span class="line">sudo apt-get --purge remove mysql-client-5.5</span><br><span class="line">sudo apt-get --purge remove mysql-common</span><br><span class="line"></span><br><span class="line"><span class="comment"># MySQL已经被卸载，依赖安装的软件就无用了（比如一些库）</span></span><br><span class="line"><span class="comment"># 该命令会自动清除这些无用依赖</span></span><br><span class="line">sudo apt-get autoremove </span><br><span class="line">sudo apt-get autoclean <span class="comment"># 删除无用的安装文件（.deb）</span></span><br><span class="line"></span><br><span class="line">sudo rm -rf /var/lib/mysql /etc/mysql ~/.mysql <span class="comment"># 删除残留的文件</span></span><br><span class="line">find / -name mysqld <span class="comment"># 找到残留的mysqld文件，然后删删删</span></span><br><span class="line"></span><br><span class="line">sudo deluser --remove-all-files mysql <span class="comment"># 删除mysql用户所拥有的全部文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重装之前</span></span><br><span class="line">sudo dpkg --configure -a <span class="comment"># 重新配置一下 dpkg</span></span><br><span class="line">sudo apt-get update <span class="comment"># 更新软件包信息列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查是否真的彻底了</span></span><br><span class="line"><span class="built_in">which</span> mysql <span class="comment"># 彻底的话会返回一个空结果。如果还有就把出来的那个结果再删了（不要怂，就是删！）</span></span><br><span class="line">mysql --version <span class="comment"># 彻底的话，会提示 mysql 尚未安装，请求安装的类似字样。如果不是就看看有没有漏掉什么</span></span><br></pre></td></tr></table></figure>
 <p>我一开始真是乱删一通，恨不得把带 mysql 几个字的都给删了（但这种行为很不理智~请勿模仿）。<br><strong>这一套下来，还不 OK！就只能用那句老话了：重装系统吧~233</strong></p>

@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的alternatives命令完美地解决了这个问题。 # Ubuntuupdate-alternatives# CentOSalternatives 不同Linux版本上命令名有所不同，但用法完全一样，下面以Ubuntu进行演示。">
 <meta name="keywords" content="linux,JDK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux多版本JDK切换">
 <meta property="og:url" content="https://alonezero.github.io/posts/31b9e7c6/index.html">
 <meta property="og:site_name" content="justZero&#39;s Blog">
-<meta property="og:description" content="一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的alternatives命令完美地解决了这个问题。 # Ubuntuupdate-alternatives# CentOSalternatives 不同Linux版本上命令名有所不同，但用法完全一样，下面以Ubuntu进行演示。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T15:48:07.519Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1606489-1c75a6e0d8e86fda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-05T12:42:58.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux多版本JDK切换">
-<meta name="twitter:description" content="一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的alternatives命令完美地解决了这个问题。 # Ubuntuupdate-alternatives# CentOSalternatives 不同Linux版本上命令名有所不同，但用法完全一样，下面以Ubuntu进行演示。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1606489-1c75a6e0d8e86fda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -173,7 +172,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">发发牢骚</h1>
+        <h1 class="site-subtitle" itemprop="description">爱编程，更爱生活！</h1>
       
   </div>
 
@@ -409,10 +408,11 @@
       
 
       
-        <p>一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的<code>alternatives</code>命令完美地解决了这个问题。</p>
+        <p><img src="https://upload-images.jianshu.io/upload_images/1606489-1c75a6e0d8e86fda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<p>一台机器上经常存在多个版本的JDK，如何方便的切换呢？Linux的<code>alternatives</code>命令完美地解决了这个问题。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Ubuntu</span></span><br><span class="line">update-alternatives</span><br><span class="line"></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line">alternatives</span><br></pre></td></tr></table></figure>
 <p>不同Linux版本上命令名有所不同，但用法完全一样，下面以<strong>Ubuntu</strong>进行演示。</p>
-<a id="more"></a>
 <h3 id="注册JDK相关命令"><a href="#注册JDK相关命令" class="headerlink" title="注册JDK相关命令"></a>注册JDK相关命令</h3><p>机器上除了自带的OpenJDK，还有一个我自己下载的JDK1.8</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --install &lt;link_path&gt; &lt;name&gt; &lt;command_path&gt; &lt;priority&gt;</span></span><br><span class="line"><span class="comment"># priority：数值越大优先级越高。当优先级为当前最大时，alternatives自动选择其为默认命令</span></span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /home/leo/jdk8/bin/java 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /home/leo/jdk8/bin/javac 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/jar java /home/leo/jdk8/bin/jar 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下 /usr/bin</span></span><br><span class="line">ls -al | grep java</span><br><span class="line"><span class="comment"># 效果如下</span></span><br><span class="line">lrwxrwxrwx  1 root root          22 11月 13  2015 java -&gt; /etc/alternatives/java</span><br><span class="line">lrwxrwxrwx  1 root root          23 11月 13  2015 javac -&gt; /etc/alternatives/javac</span><br></pre></td></tr></table></figure>
 <h3 id="手动配置默认JDK相关命令"><a href="#手动配置默认JDK相关命令" class="headerlink" title="手动配置默认JDK相关命令"></a>手动配置默认JDK相关命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># update-alternatives --config &lt;command_name&gt;</span></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"><span class="comment"># 出现选择界面，输入序号回车即可</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative java (providing /usr/bin/java).</span><br><span class="line"></span><br><span class="line">  Selection    Path                                            Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">  0            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java   1071      auto mode</span><br><span class="line">* 1            /usr/lib/jvm/jdk8/bin/java                       1         manual mode</span><br><span class="line"></span><br><span class="line">Press enter to keep the current choice[*], or <span class="built_in">type</span> selection number: 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上配置javac、jar命令即可</span></span><br></pre></td></tr></table></figure>

@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="一、事务的特性 原子性：指处于同一个事务中的多条语句是不可分割的。 一致性：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。比如：转账—转账前两个账户余额之和为233￥，转账之后也应该是233￥。 隔离性：指多线程环境下，一个线程中的事务不能被其他线程中的事务打扰 持久性：事务一旦提交，就应该被永久保存起来。">
 <meta name="keywords" content="MySQL,数据库事务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL事务隔离级别">
 <meta property="og:url" content="https://alonezero.github.io/posts/8f885523/index.html">
 <meta property="og:site_name" content="justZero&#39;s Blog">
-<meta property="og:description" content="一、事务的特性 原子性：指处于同一个事务中的多条语句是不可分割的。 一致性：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。比如：转账—转账前两个账户余额之和为233￥，转账之后也应该是233￥。 隔离性：指多线程环境下，一个线程中的事务不能被其他线程中的事务打扰 持久性：事务一旦提交，就应该被永久保存起来。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1606489-1e9c390e4c7b4e2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1606489-56d81fd181aec8e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-25T11:14:12.199Z">
+<meta property="og:updated_time" content="2018-05-05T12:36:42.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL事务隔离级别">
-<meta name="twitter:description" content="一、事务的特性 原子性：指处于同一个事务中的多条语句是不可分割的。 一致性：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。比如：转账—转账前两个账户余额之和为233￥，转账之后也应该是233￥。 隔离性：指多线程环境下，一个线程中的事务不能被其他线程中的事务打扰 持久性：事务一旦提交，就应该被永久保存起来。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1606489-56d81fd181aec8e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1606489-1e9c390e4c7b4e2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -175,7 +173,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">发发牢骚</h1>
+        <h1 class="site-subtitle" itemprop="description">爱编程，更爱生活！</h1>
       
   </div>
 
@@ -411,14 +409,15 @@
       
 
       
-        <h2 id="一、事务的特性"><a href="#一、事务的特性" class="headerlink" title="一、事务的特性"></a>一、事务的特性</h2><ul>
+        <p><img src="https://upload-images.jianshu.io/upload_images/1606489-1e9c390e4c7b4e2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><ul>
 <li><strong>原子性</strong>：指处于同一个事务中的多条语句是不可分割的。</li>
 <li><strong>一致性</strong>：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。比如：转账—转账前两个账户余额之和为233￥，转账之后也应该是233￥。</li>
 <li><strong>隔离性</strong>：指多线程环境下，一个线程中的事务不能被其他线程中的事务打扰</li>
 <li><strong>持久性</strong>：事务一旦提交，就应该被永久保存起来。</li>
 </ul>
-<a id="more"></a>
-<h2 id="二、-事务的隔离性：隔离级别分类"><a href="#二、-事务的隔离性：隔离级别分类" class="headerlink" title="二、 事务的隔离性：隔离级别分类"></a>二、 事务的隔离性：隔离级别分类</h2><p>   如果不考虑事务的隔离性，则可能会出现以下问题：</p>
+<h2 id="事务的隔离性：隔离级别分类"><a href="#事务的隔离性：隔离级别分类" class="headerlink" title="事务的隔离性：隔离级别分类"></a>事务的隔离性：隔离级别分类</h2><p>如果不考虑事务的隔离性，则可能会出现以下问题：</p>
 <ul>
 <li><strong>脏读</strong>：指一个线程中的事务读取到了另外一个线程中<strong>未提交</strong>的数据。</li>
 <li><strong>不可重复读</strong>：指一个线程中的事务读取到了另外一个线程中<strong>提交的update</strong>的数据。</li>
@@ -771,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、事务的特性"><span class="nav-number">1.</span> <span class="nav-text">一、事务的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-事务的隔离性：隔离级别分类"><span class="nav-number">2.</span> <span class="nav-text">二、 事务的隔离性：隔离级别分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拿-MySQL-现身说法"><span class="nav-number">3.</span> <span class="nav-text">拿 MySQL 现身说法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-中控制事务的隔离级别："><span class="nav-number">4.</span> <span class="nav-text">JDBC 中控制事务的隔离级别：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的特性"><span class="nav-number">1.</span> <span class="nav-text">事务的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的隔离性：隔离级别分类"><span class="nav-number">2.</span> <span class="nav-text">事务的隔离性：隔离级别分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拿-MySQL-现身说法"><span class="nav-number">3.</span> <span class="nav-text">拿 MySQL 现身说法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-中控制事务的隔离级别："><span class="nav-number">4.</span> <span class="nav-text">JDBC 中控制事务的隔离级别：</span></a></li></ol></div>
             
 
           </div>
