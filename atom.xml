@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>justZero&#39;s Blog</title>
+  <title>justZero</title>
   
   <subtitle>爱编程，更爱生活！</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -8,11 +8,6 @@
   <link href="https://alonezero.github.io/"/>
   <updated>2018-05-18T16:01:46.093Z</updated>
   <id>https://alonezero.github.io/</id>
-  
-  <author>
-    <name>justZero</name>
-    
-  </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
