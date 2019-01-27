@@ -874,16 +874,16 @@
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
         el: '#comments' ,
-        verify: true,
+        verify: false,
         notify: true,
-        appId: 'jA88j6kUdrPzd2VoIH9dRSGj-gzGzoHsz',
-        appKey: 'GOolhdBjnLXuhMwlJPzo1E9H',
+        appId: 'SlJNvJpMosEFPpudAOQzXaiM-gzGzoHsz',
+        appKey: 'QbBAt982UuxShvhyqB7YCbt6',
         placeholder: '干杯 []~(￣▽￣)~*',
         avatar:'mm',
         guest_info:guest,
