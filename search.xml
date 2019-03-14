@@ -3,6 +3,143 @@
   
     
     <entry>
+      <title><![CDATA[CVTE 电话面试]]></title>
+      <url>/posts/9e4eea06/</url>
+      <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1606489-69f5b3738ec6eaa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Stay Hungry, Stay Foolish."></p>
+<a id="more"></a>
+<h2 id="面向对象三大特性"><a href="#面向对象三大特性" class="headerlink" title="面向对象三大特性"></a>面向对象三大特性</h2><ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<h2 id="多态有什么好处"><a href="#多态有什么好处" class="headerlink" title="多态有什么好处"></a>多态有什么好处</h2><p><strong>什么是多态？</strong></p>
+<p>同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果，这就是多态性。简单的说：就是用基类的引用指向子类的对象。</p>
+<p><strong>为什么要用多态？</strong></p>
+<p>封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；它们的目的都是为了——<strong>代码重用</strong>。而多态除了代码的复用性外，还可以解决项目中紧偶合的问题，提高程序的可扩展性。耦合度讲的是模块与模块之间，代码与代码之间的关联度，通过对系统的分析把他分解成一个一个子模块，子模块提供稳定的接口，达到降低系统耦合度的目的，模块与模块之间尽量使用模块接口访问，而不是随意引用其他模块的成员变量。</p>
+<p><strong>多态的好处</strong></p>
+<ol>
+<li>应用程序不必为每一个派生类编写功能调用，只需要对抽象基类进行处理即可。大大提高程序的可复用性。// 继承 </li>
+<li>派生类的功能可以被基类的方法或引用变量所调用，这叫向后兼容，可以提高可扩充性和可维护性。 // 多态的真正作用</li>
+</ol>
+<h2 id="实现多态的方式"><a href="#实现多态的方式" class="headerlink" title="实现多态的方式"></a>实现多态的方式</h2><ol>
+<li>实现接口</li>
+<li>继承父类，重写父类方法；或继承的是抽象类，实现抽象方法</li>
+<li>同一个类中，方法重载</li>
+</ol>
+<h2 id="创建对象实例的方式有哪些？"><a href="#创建对象实例的方式有哪些？" class="headerlink" title="创建对象实例的方式有哪些？"></a>创建对象实例的方式有哪些？</h2><ol>
+<li><p>使用<code>new</code>关键字</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用反射机制</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line">User user = (User) Class.forName(<span class="string">"package.User"</span>).newInstance();</span><br><span class="line"><span class="comment">// 方法2</span></span><br><span class="line">User user = User.class.newInstance();</span><br><span class="line"><span class="comment">// 调用构造方法</span></span><br><span class="line">Constructor&lt;User&gt; constructor = User.class.getConstructor();</span><br><span class="line">User user = constructor.newInstance();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>clone</code>方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// clone 被 protected 修饰</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        CloneTest cloneTest = <span class="keyword">new</span> CloneTest();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            CloneTest copy = (CloneTest) cloneTest.clone();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用反序列化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerializableDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Initializes The Object</span></span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"Leo"</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Write Obj to File（序列化）</span></span><br><span class="line">        <span class="keyword">try</span> (ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(</span><br><span class="line">                <span class="keyword">new</span> FileOutputStream(<span class="string">"tempFile"</span>))) &#123;</span><br><span class="line">            oos.writeObject(user);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Read Obj from File（反序列化）</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"tempFile"</span>);</span><br><span class="line">        <span class="keyword">try</span> (ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(</span><br><span class="line">                <span class="keyword">new</span> FileInputStream(file))) &#123;</span><br><span class="line">            User newUser = (User) ois.readObject();</span><br><span class="line">            System.out.println(newUser);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!file.delete()) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"无法删除该文件："</span> + file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1565116950906132146L</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    User(String name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="double-和-BigDecimal-比较"><a href="#double-和-BigDecimal-比较" class="headerlink" title="double 和 BigDecimal 比较"></a>double 和 BigDecimal 比较</h2><p><code>BigDecimal</code>的缺点：</p>
+<ol>
+<li>占用更多内存；</li>
+<li>与基本类型相比，不能使用数学运算符，计算方式更复杂；</li>
+<li>执行效率慢。</li>
+</ol>
+<p><code>BigDecimal</code>的优点：</p>
+<ol>
+<li>精度更高，避免出现<code>double</code>运算精度异常的问题；</li>
+<li>更灵活和方便的小数点处理（支持多种舍入模式）。</li>
+</ol>
+<h2 id="IO-和-NIO-比较"><a href="#IO-和-NIO-比较" class="headerlink" title="IO 和 NIO 比较"></a>IO 和 NIO 比较</h2><table>
+<thead>
+<tr>
+<th>IO</th>
+<th>NIO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>面向流</td>
+<td>面向缓冲区、基于通道</td>
+</tr>
+<tr>
+<td>阻塞 IO</td>
+<td>非阻塞 IO</td>
+</tr>
+<tr>
+<td>无</td>
+<td>选择器（Selectors）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Hashtable-和-HashMap-比较"><a href="#Hashtable-和-HashMap-比较" class="headerlink" title="Hashtable 和 HashMap 比较"></a>Hashtable 和 HashMap 比较</h2><ol>
+<li><code>HashMap</code>可以插入<code>key</code>或<code>value</code>为<code>null</code> 的 <code>Entry</code> ；</li>
+<li><code>HashMap</code> 把<code>Hashtable</code>的 <code>contains</code>方法移除了，改成<code>containsValue</code>和<code>containsKey</code>。因为 <code>contains</code> 方法容易让人引起误解；</li>
+<li><code>HashTable</code> 的迭代器是<code>fail-fast</code>迭代器；</li>
+<li><code>HashMap</code>不能保证随着时间的推移 Map 中的元素次序是不变的。</li>
+<li><code>HashTable</code> 的方法均使用 <code>synchronized</code> 修饰。</li>
+</ol>
+<h2 id="HashMap-的扩容策略"><a href="#HashMap-的扩容策略" class="headerlink" title="HashMap 的扩容策略"></a>HashMap 的扩容策略</h2><p>三个关键参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capacity</td>
+<td>table 容量大小，默认为 16。且必须保证该值为 2 的 n 次方</td>
+</tr>
+<tr>
+<td>size</td>
+<td>键值对的数量</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>size 的临界值，当 size 大于等于 threshold 就必须进行扩容操作</td>
+</tr>
+<tr>
+<td>loadFactor</td>
+<td>装载因子，table 能够使用的比例，threshold=capacity*loadFactor</td>
+</tr>
+</tbody>
+</table>
+<p>当需要扩容时，<code>capacity</code>将变为原来的两倍。</p>
+<h2 id="介绍下红黑树"><a href="#介绍下红黑树" class="headerlink" title="介绍下红黑树"></a>介绍下红黑树</h2><p>红黑树是一种自平衡二叉查找树。它可以在$O(log\,n)$时间内完成查找、插入和删除，这里 n 是树中元素的数目。</p>
+<p>红黑树相对于AVL树来说，牺牲了部分平衡性以换取插入/删除操作时少量的旋转操作，整体来说性能要优于AVL树。</p>
+<p>红黑树还不了解，待补充……</p>
+<h2 id="介绍几种常用的设计模式"><a href="#介绍几种常用的设计模式" class="headerlink" title="介绍几种常用的设计模式"></a>介绍几种常用的设计模式</h2><p>单例：确保一个类只有一个实例，并提供该实例的全局访问点。</p>
+<p>简单工厂：在创建一个对象时不向客户暴露内部细节，并提供一个创建对象的通用接口。</p>
+<p>观察者：定义对象之间的一对多依赖，当一个对象状态改变时，它的所有依赖都会收到通知并且自动更新状态。</p>
+<p>代理：控制对其它对象的访问。</p>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><ol>
+<li>自己项目的一些问题；</li>
+<li>谈谈职业规划；</li>
+<li>平常如何学习技术；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 那年编程那些事儿 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> CVTE </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Spring MVC 大文件上传之连接重置]]></title>
       <url>/posts/efbbbff4/</url>
       <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1606489-34816aa8af8b525f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来自网络"></p>
