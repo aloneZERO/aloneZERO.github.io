@@ -111,6 +111,55 @@
 <h2 id="介绍下红黑树"><a href="#介绍下红黑树" class="headerlink" title="介绍下红黑树"></a>介绍下红黑树</h2><p>红黑树是一种自平衡二叉查找树。它可以在<code>O(log n)</code>时间内完成查找、插入和删除，这里 n 是树中元素的数目。</p>
 <p>红黑树相对于AVL树来说，牺牲了部分平衡性以换取插入/删除操作时少量的旋转操作，整体来说性能要优于AVL树。</p>
 <p>红黑树还不了解，待补充……</p>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p><strong>四种元注解</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Target</td>
+<td>描述注解的作用目标</td>
+</tr>
+<tr>
+<td>@Retention</td>
+<td>需要在什么级别保存该注解信息，用于描述注解的生命周期</td>
+</tr>
+<tr>
+<td>@Documented</td>
+<td>表明注解包含在 Javadoc 生成的文档中</td>
+</tr>
+<tr>
+<td>@Inherited</td>
+<td>表明注解可以被继承</td>
+</tr>
+</tbody>
+</table>
+<p><code>@Target</code>的作用目标包括：</p>
+<ul>
+<li><code>ElementType.TYPE</code>：接口、类、枚举、注解</li>
+<li><code>ElementType.FIELD</code>：字段、枚举的常量</li>
+<li><code>ElementType.METHOD</code>：方法</li>
+<li><code>ElementType.PARAMETER</code>：方法参数</li>
+<li><code>ElementType.CONSTRUCTOR</code>：构造函数</li>
+<li><code>ElementType.LOCAL_VARIABLE</code>：局部变量</li>
+<li><code>ElementType.ANNOTATION_TYPE</code>：注解</li>
+<li><code>ElementType.PACKAGE</code>：包</li>
+</ul>
+<p><code>@Retention</code>注解的保留策略包括：</p>
+<ul>
+<li><p><code>RetentionPolicy.SOURCE</code>：仅存在于源码中，在字节码文件中不包含</p>
+</li>
+<li><p><code>RetentionPolicy.CLASS</code>：默认。会在字节码文件中存在，但运行时无法获得</p>
+</li>
+<li><code>RetentionPolicy.RUNTIME</code>：会在字节码文件中存在，运行时可通过反射获取到</li>
+</ul>
+<p><strong>自定义注解示例模板</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">@元注解</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> 注解名 &#123;</span><br><span class="line">	修饰符 返回值 属性名() <span class="keyword">default</span> + something;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>自定义注解的解析</strong>：自己选取一个合适的时机和位置，比如工厂类创建对象实例的方法中，根据反射技术，拿到用户想要创建的对象上的注解，然后根据注解去做相应的初始化工作。再比如校验性注解，在一个校验方法中，传入对象实例，根据反射拿到注解注明的校验信息，然后判断该实例是否合法。</p>
 <h2 id="介绍几种常用的设计模式"><a href="#介绍几种常用的设计模式" class="headerlink" title="介绍几种常用的设计模式"></a>介绍几种常用的设计模式</h2><p>单例：确保一个类只有一个实例，并提供该实例的全局访问点。</p>
 <p>简单工厂：在创建一个对象时不向客户暴露内部细节，并提供一个创建对象的通用接口。</p>
 <p>观察者：定义对象之间的一对多依赖，当一个对象状态改变时，它的所有依赖都会收到通知并且自动更新状态。</p>
