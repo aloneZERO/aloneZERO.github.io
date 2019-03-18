@@ -15,7 +15,7 @@
 <ul>
 <li><code>HashMap</code>允许键和值是<code>null</code>，而<code>Hashtable</code>不允许键或者值是<code>null</code>。</li>
 <li><code>HashMap</code>随着时间的推移，无法保证元素次序是不变的。</li>
-<li><code>HashMap</code>提供了<code>fail-fast</code>迭代器，即多线程迭代会发生 <code>ConcurrentModificationException</code>。</li>
+<li><code>HashMap</code>提供了<code>fail-fast</code>迭代器，即多线程环境下迭代<strong>可能会发生</strong> <code>ConcurrentModificationException</code>。</li>
 <li><code>Hashtable</code>是线程安全的，而<code>HashMap</code>不是。</li>
 <li><code>Hashtable</code>提供了对键的枚举（Enumeration）。</li>
 </ul>
